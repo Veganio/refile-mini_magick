@@ -1,6 +1,7 @@
 require "refile"
 require "refile/mini_magick/version"
 require "image_processing/mini_magick"
+require "image_processing/vips"
 
 module Refile
   # Processes images via MiniMagick, resizing cropping and padding them.
@@ -117,7 +118,7 @@ module Refile
     # @yield [MiniMagick::Tool::Convert]
     # @return [Tempfile]                  the processed file
     def call(file, *args, format: nil, &block)
-      pipeline = ImageProcessing::MiniMagick.source(file)
+      pipeline = ImageProcessing::Vips.source(file)
       pipeline = pipeline.convert(format) if format
       pipeline = pipeline.custom(&block)
 
