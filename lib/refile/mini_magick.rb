@@ -65,7 +65,7 @@ module Refile
     # @return [Tempfile]
     # @see http://www.imagemagick.org/script/command-line-options.php#gravity
     def fill(pipeline, width, height, gravity = "Center")
-      pipeline.resize_to_fill!(width, height, gravity: gravity)
+      pipeline.resize_to_fill!(width, height, crop: :attention)
     end
 
     # Resize the image to fit within the specified dimensions while retaining
